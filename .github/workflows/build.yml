@@ -30,7 +30,7 @@ jobs:
             ext: ''
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -65,3 +65,4 @@ jobs:
         with:
           name: ${{ steps.bin.outputs.name }}-${{ matrix.suffix }}
           path: ${{ steps.bin.outputs.name }}-${{ matrix.suffix }}${{ matrix.ext }}
+          archive: false
