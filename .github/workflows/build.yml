@@ -2,6 +2,7 @@ name: Build
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -47,7 +48,12 @@ jobs:
         run: echo "name=$(cargo metadata --no-deps --format-version=1 | jq -r '.packages[0].name')" >> "$GITHUB_OUTPUT"
 
       - name: Build
+        env:
+          LZMA_API_STATIC: "1"  # don't dynamically link liblzma (dependency of the yt_dlp crate)
         run: cargo build --release --target ${{ matrix.target }}
+
+      - name: Test
+        run: target/${{ matrix.target }}/release/${{ steps.bin.outputs.name }}${{ matrix.ext }} --help
 
       - name: Rename binary
         shell: bash
