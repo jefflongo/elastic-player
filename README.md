@@ -8,7 +8,7 @@ This application will not be available on until [crates.io](https://crates.io/) 
 ```bash
 cargo install --path .
 ```
-Or download a binary from the published releases. If downloading a binary on Mac, `xz` is required: `brew install xz`.
+Or download a binary from the published releases.
 
 ## Usage
 
