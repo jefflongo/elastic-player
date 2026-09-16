@@ -52,6 +52,9 @@ jobs:
           LZMA_API_STATIC: "1"  # don't dynamically link liblzma (dependency of the yt_dlp crate)
         run: cargo build --release --target ${{ matrix.target }}
 
+      - name: Test
+        run: target/${{ matrix.target }}/release/${{ steps.bin.outputs.name }}${{ matrix.ext }} --help
+
       - name: Rename binary
         shell: bash
         run: |
