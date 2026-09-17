@@ -194,9 +194,14 @@ fn draw(f: &mut Frame, player: &Player, metadata: &TrackMetadata, selected: UiSe
     let box_area = centered_rect(60, 5, f.area());
 
     // draw the program title over the top of the border
+    let mut title = " Elastic Player ".to_string();
+    if metadata.loop_track {
+        title.push_str("[loop] ");
+    }
+
     let block = Block::default()
         .borders(Borders::ALL)
-        .title(" Elastic Player ")
+        .title(title)
         .title_alignment(Alignment::Center);
     let inner = block.inner(box_area);
     f.render_widget(block, box_area);
@@ -236,7 +241,7 @@ fn draw(f: &mut Frame, player: &Player, metadata: &TrackMetadata, selected: UiSe
 fn handle_input(
     event: KeyEvent,
     player: &Player,
-    metadata: &TrackMetadata,
+    metadata: &mut TrackMetadata,
     selected: &mut UiSelection,
 ) -> InputResult {
     const SEEK_INC: Duration = Duration::from_secs(5);
@@ -292,6 +297,11 @@ fn handle_input(
         // select volume
         KeyCode::Char('v') => {
             *selected = UiSelection::Volume;
+        }
+
+        // toggle loop
+        KeyCode::Char('l') => {
+            metadata.loop_track = !metadata.loop_track;
         }
 
         // seek to beginning
@@ -375,7 +385,7 @@ fn handle_input(
 async fn cli_player_main(
     terminal: &mut DefaultTerminal,
     player: Player,
-    metadata: TrackMetadata,
+    mut metadata: TrackMetadata,
 ) -> Result<()> {
     let mut reader = EventStream::new();
     let mut last_pos = None;
@@ -391,7 +401,7 @@ async fn cli_player_main(
 
                 match event? {
                     Event::Key(e) => {
-                        match handle_input(e, &player, &metadata, &mut selected) {
+                        match handle_input(e, &player, &mut metadata, &mut selected) {
                             InputResult::Quit => break,
                             InputResult::Handled => true,
                             InputResult::Unhandled => false,
