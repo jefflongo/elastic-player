@@ -151,7 +151,11 @@ async fn main() -> Result<()> {
     let installer = LibraryInstaller::new(executables_dir);
     let ffmpeg = match which("ffmpeg") {
         Ok(path) => path,
-        _ => installer.install_ffmpeg(None).await?,
+        _ => {
+            installer
+                .install_ffmpeg_from_repo("jefflongo", "ffmpeg-builds", None)
+                .await?
+        }
     };
 
     let source = if Path::new(&cli.query).exists() {

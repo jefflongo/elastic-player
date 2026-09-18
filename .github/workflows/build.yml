@@ -15,7 +15,6 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             suffix: linux-x86_64
-            ext: ''
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             suffix: windows-x86_64
@@ -23,11 +22,11 @@ jobs:
           - os: macos-latest
             target: x86_64-apple-darwin
             suffix: macos-x86_64
-            ext: ''
+            deployment_target: '10.13'
           - os: macos-latest
             target: aarch64-apple-darwin
             suffix: macos-arm64
-            ext: ''
+            deployment_target: '11.0'
 
     steps:
       - uses: actions/checkout@v7
@@ -50,6 +49,7 @@ jobs:
       - name: Build
         env:
           LZMA_API_STATIC: "1"  # don't dynamically link liblzma (dependency of the yt_dlp crate)
+          MACOSX_DEPLOYMENT_TARGET: ${{ matrix.deployment_target }}
         run: cargo build --release --target ${{ matrix.target }}
 
       - name: Test
