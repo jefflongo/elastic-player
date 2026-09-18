@@ -2060,7 +2060,7 @@ dependencies = [
 [[package]]
 name = "media-seek"
 version = "0.4.0"
-source = "git+https://github.com/jefflongo/yt-dlp.git?branch=search-first-fix#bf170b4f991e4eed8b5ad37b0da4bcdd377d1a35"
+source = "git+https://github.com/jefflongo/yt-dlp.git?branch=elastic-player#dc40df8275ad811a60027a0dc1ab8f8cd0d8d964"
 dependencies = [
  "futures-util",
  "thiserror 2.0.20",
@@ -4827,7 +4827,7 @@ dependencies = [
 [[package]]
 name = "yt-dlp"
 version = "2.8.3"
-source = "git+https://github.com/jefflongo/yt-dlp.git?branch=search-first-fix#bf170b4f991e4eed8b5ad37b0da4bcdd377d1a35"
+source = "git+https://github.com/jefflongo/yt-dlp.git?branch=elastic-player#dc40df8275ad811a60027a0dc1ab8f8cd0d8d964"
 dependencies = [
  "async-trait",
  "cfg-if 1.0.5",
