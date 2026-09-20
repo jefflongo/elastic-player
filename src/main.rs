@@ -153,7 +153,8 @@ async fn main() -> Result<()> {
         Ok(path) => path,
         _ => {
             installer
-                .install_ffmpeg_from_repo("jefflongo", "ffmpeg-builds", None)
+                // waiting for `https://github.com/boul2gom/ffmpeg-builds/pull/1` to be closed before using the default repo
+                .install_ffmpeg_from_repo("Tyrrrz", "FFmpegBin", None)
                 .await?
         }
     };
