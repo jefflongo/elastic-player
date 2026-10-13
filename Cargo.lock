@@ -1982,9 +1982,9 @@ dependencies = [
 
 [[package]]
 name = "lofty"
-version = "0.24.0"
+version = "0.25.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dec4feeff6c7d75093278133a06e827d7af6d2bfe20b0f331f9d10338a5ec7ca"
+checksum = "bb21dd79145b0781f2423fda92dd807fcd3911e44b66044d86db3b11ec7accf9"
 dependencies = [
  "byteorder",
  "data-encoding",
@@ -1997,13 +1997,13 @@ dependencies = [
 
 [[package]]
 name = "lofty_attr"
-version = "0.12.0"
+version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "458ace39169e4b83c4f77ae3d42d5d1d11c422feef590219a97c973d3b524557"
+checksum = "fdbca1b60ba7cea959ffc84ac27f3dbdbacd6dfda168c7eabbc00e48654bb9fd"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.119",
+ "syn 3.0.6",
 ]
 
 [[package]]
@@ -2060,7 +2060,8 @@ dependencies = [
 [[package]]
 name = "media-seek"
 version = "0.4.0"
-source = "git+https://github.com/jefflongo/yt-dlp.git?branch=elastic-player#dc40df8275ad811a60027a0dc1ab8f8cd0d8d964"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bbe0e43b318d814c09360b4c525ef4caa324f079be72936efc73b8cf216ec2e3"
 dependencies = [
  "futures-util",
  "thiserror 2.0.20",
@@ -3769,7 +3770,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
 dependencies = [
  "fastrand",
- "getrandom 0.3.4",
+ "getrandom 0.4.3",
  "once_cell",
  "rustix",
  "windows-sys 0.61.2",
@@ -4826,8 +4827,9 @@ dependencies = [
 
 [[package]]
 name = "yt-dlp"
-version = "2.8.3"
-source = "git+https://github.com/jefflongo/yt-dlp.git?branch=elastic-player#dc40df8275ad811a60027a0dc1ab8f8cd0d8d964"
+version = "2.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d16ab8bbeb1c3035e139de9a3738ac163301381d9fc365be4366372b681f8b2f"
 dependencies = [
  "async-trait",
  "cfg-if 1.0.5",

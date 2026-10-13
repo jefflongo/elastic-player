@@ -151,12 +151,7 @@ async fn main() -> Result<()> {
     let installer = LibraryInstaller::new(executables_dir);
     let ffmpeg = match which("ffmpeg") {
         Ok(path) => path,
-        _ => {
-            installer
-                // waiting for `https://github.com/boul2gom/ffmpeg-builds/pull/1` to be closed before using the default repo
-                .install_ffmpeg_from_repo("Tyrrrz", "FFmpegBin", None)
-                .await?
-        }
+        _ => installer.install_ffmpeg(None).await?,
     };
 
     let source = if Path::new(&cli.query).exists() {
