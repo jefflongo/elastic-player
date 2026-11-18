@@ -134,7 +134,13 @@ async fn download_audio(
             .audio_ext
     );
     let file_name = sanitize_filename(&file_name);
-    let file_path = downloader.download_audio_stream(&video, &file_name).await?;
+    let file_path = match downloader.download_audio_stream(&video, &file_name).await {
+        Ok(p) => p,
+        Err(_) => {
+            println!("Failed to download video, updating yt-dlp and trying again..");
+            downloader.download_audio_stream(&video, &file_name).await?
+        }
+    };
     Ok(file_path)
 }
 
